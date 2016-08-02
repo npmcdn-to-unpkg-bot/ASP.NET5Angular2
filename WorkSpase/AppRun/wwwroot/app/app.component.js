@@ -30,7 +30,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             //directives: [Test],
-            template: "<h1>{{title}}</h1>\n<ul class=\"list-group\">\n    <li *ngFor=\"let test of tests\" class=\"list-group-item list-group-item-info\">\n        {{test.id}} <div class=\"list-group-item list-group-item-info\">{{test.name}}</div>\n    </li>\n</ul>",
+            template: "\n    <div class=\"row\">\n    <div class=\"col-md-offset-4 col-md-4\">\n    <h1>{{title}}</h1>\n        <table class=\"table\">\n            <thead>\n                <tr>\n                    <th>Value ID</th>\n                    <th>Value Name</th>\n                    <th>Value Descriptio</th>\n                    <th>Delete</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr *ngFor=\"let test of tests\">\n                    <td>{{test.id}}</td>\n                    <td>{{test.name}}</td>\n                    <td>{{test.description}}</td>\n                    <td> <span class=\"glyphicon glyphicon-edit\" aria-hidden=\"true\"></span> </td>\n                    <td> <span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span> </td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n    </div>\n    ",
             providers: [
                 http_1.HTTP_PROVIDERS,
                 test_service_1.TestService

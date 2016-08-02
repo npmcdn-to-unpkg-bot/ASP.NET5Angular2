@@ -8,12 +8,32 @@ import 'rxjs/Rx';
 @Component({
     selector: 'my-app',
     //directives: [Test],
-    template: `<h1>{{title}}</h1>
-<ul class="list-group">
-    <li *ngFor="let test of tests" class="list-group-item list-group-item-info">
-        {{test.id}} <div class="list-group-item list-group-item-info">{{test.name}}</div>
-    </li>
-</ul>`,
+    template: `
+    <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+    <h1>{{title}}</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Value ID</th>
+                    <th>Value Name</th>
+                    <th>Value Descriptio</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let test of tests">
+                    <td>{{test.id}}</td>
+                    <td>{{test.name}}</td>
+                    <td>{{test.description}}</td>
+                    <td> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> </td>
+                    <td> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    `,
     providers: [
         HTTP_PROVIDERS,
         TestService

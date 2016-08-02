@@ -13,8 +13,9 @@ namespace AppRun.Controllers
     public class TestController : Controller
     {
         private List<Test> _local = new List<Test> {
-                new Test {Id = 1, Name = "First" },
-                new Test {Id = 2, Name = "Second" }
+                new Test {Id = 1, Name = "First", Description = "Something about One" },
+                new Test {Id = 2, Name = "Second", Description = "Something about Two" },
+                new Test {Id = 3, Name = "Third", Description = "Something about Three" }
             };
 
         // GET: api/values

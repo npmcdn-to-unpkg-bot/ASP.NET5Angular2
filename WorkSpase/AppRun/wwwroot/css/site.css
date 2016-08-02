@@ -36,3 +36,7 @@ textarea {
     display: none
   }
 }
+
+.table {
+    border: 0;
+}
