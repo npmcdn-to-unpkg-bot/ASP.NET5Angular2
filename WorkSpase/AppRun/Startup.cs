@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using AppRun.Models.Concrete;
+using Microsoft.EntityFrameworkCore;
 
 namespace AppRun
 {
@@ -35,7 +37,9 @@ namespace AppRun
         {
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
-
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<EFDbContext>(options =>
+                options.UseSqlServer(connection));
             services.AddMvc();
         }
 
