@@ -9,17 +9,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var contact_form_component_1 = require('./contact-form.component');
+//import {ContactFormComponent} from './contact-form.component';
+var http_1 = require('@angular/http');
+var test_service_1 = require('./test.service');
+require('rxjs/Rx');
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(_testService) {
+        this._testService = _testService;
+        this.title = 'Test list';
     }
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._testService.getTest()
+            .subscribe(function (tests) {
+            _this.tests = tests;
+        }),
+            function (error) { return alert(error); };
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            directives: [contact_form_component_1.ContactFormComponent],
-            template: '<contact-form></contact-form>'
+            //directives: [Test],
+            template: "<h1>{{title}}</h1>\n<ul class=\"list-group\">\n    <li *ngFor=\"let test of tests\" class=\"list-group-item list-group-item-info\">\n        {{test.id}} <div class=\"list-group-item list-group-item-info\">{{test.name}}</div>\n    </li>\n</ul>",
+            providers: [
+                http_1.HTTP_PROVIDERS,
+                test_service_1.TestService
+            ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [test_service_1.TestService])
     ], AppComponent);
     return AppComponent;
 }());
